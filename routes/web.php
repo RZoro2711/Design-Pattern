@@ -1,5 +1,6 @@
 <?php
 
+use App\MyClass\Singleton;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -15,4 +16,11 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('welcome');
+});
+
+Route::get('/singleton', function () {
+    $singleton1 = Singleton::create();
+    $singleton1->dark = 1;
+    $singleton2 = Singleton::create();
+    echo $singleton2->dark;
 });
